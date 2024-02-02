@@ -41,6 +41,7 @@ function kjopbilett() {
 
     //opprett billettobjektet
     let billett = {
+        film: document.getElementById('filmDropdown').value,
         antall: antall,
         fornavn: fornavn,
         etternavn: etternavn,
@@ -68,7 +69,7 @@ function visbillettliste() {
 
     for (let i = 0; i < bilettliste.length; i++) {
         let billett = bilettliste[i];
-        let billettTekst = 'Antall: ' + billett.antall + ', Fornavn: ' + billett.fornavn + ' , Etternavn: ' + billett.etternavn + ', Telefon: ' + billett.telefon + ', Epost: ' + billett.epost;
+        let billettTekst = 'Film: '+ billett.film +',Antall: ' + billett.antall + ', Fornavn: ' + billett.fornavn + ' , Etternavn: ' + billett.etternavn + ', Telefon: ' + billett.telefon + ', Epost: ' + billett.epost;
         let li = document.createElement('li');
         li.appendChild(document.createTextNode(billettTekst));
         elementliste.appendChild(li);
