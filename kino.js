@@ -58,7 +58,7 @@ function kjopbilett() {
 
     //for å tømme input feltene
     document.getElementsByName('antall')[0].value = '';
-    document.getElementById('navn').value = '';
+    document.getElementById('navn')[0].value = '';
     document.getElementsByName('etternavn')[0].value = '';
     document.getElementsByName('telefon')[0].value = '';
     document.getElementsByName('epost')[0].value = '';
