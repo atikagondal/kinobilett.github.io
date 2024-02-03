@@ -23,7 +23,7 @@ function kjopbilett() {
     // Validering for fornavn og etternavn (kun bokstaver tillatt)
     let navnRegex = /^[a-zA-Z]+$/;
     if (!fornavn || !navnRegex.test(fornavn) || !etternavn || !navnRegex.test(etternavn)) {
-        feilmeldingElement.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt.';
+        feilmeldingElement.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt).';
         return;
     }
 
@@ -36,7 +36,7 @@ function kjopbilett() {
 
     // Validering for e-postadresse
     let epostRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!epost || !epostRegex.test(epost)) {
+    if (!epost || !epostRegex.test(epost) || !gyldigEpost(epost)) {
         feilmeldingElement.innerText = 'Vennligst skriv inn en gyldig e-postadresse.';
         return;
     }
@@ -58,10 +58,10 @@ function kjopbilett() {
 
     //for å tømme input feltene
     document.getElementsByName('antall')[0].value = '';
-    document.getElementById('navn')[0].value = '';
+    document.getElementById('fornavn').value = '';
     document.getElementsByName('etternavn')[0].value = '';
     document.getElementsByName('telefon')[0].value = '';
-    document.getElementsByName('epost')[0].value = '';
+    document.getElementsById('epost').value = '';
 
 }
 
