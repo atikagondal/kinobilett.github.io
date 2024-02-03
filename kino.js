@@ -58,10 +58,10 @@ function kjopbilett() {
 
     //for å tømme input feltene
     document.getElementsByName('antall')[0].value = '';
-    document.getElementById('fornavn').value = '';
+    document.getElementById('navn').value = '';
     document.getElementsByName('etternavn')[0].value = '';
     document.getElementsByName('telefon')[0].value = '';
-    document.getElementsById('epost').value = '';
+    document.getElementById('epost').value = '';
 
 }
 
@@ -102,9 +102,7 @@ for (let i = 0; i < fields.length; i++) {
     let label = document.createElement('label');
     label.textContent = fields[i] + ':';
 
-    document.getElementById('inputFields').appendChild(label);
-    document.getElementById('inputFields').appendChild(inputField);
+
 
     // Legg til <br> mellom hvert inputfelt
-    document.getElementById('inputFields').appendChild(document.createElement('br'));
 }

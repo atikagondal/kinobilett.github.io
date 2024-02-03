@@ -9,6 +9,8 @@
 <body>
 <h1>Bestilling av kinobilletter</h1>
 
+<div id="feilmelding"></div>
+
 
 <br>
 
@@ -18,8 +20,12 @@
 <div class="dropdown">
     <label for="filmDropdown">Velg film:</label>
     <select id="filmDropdown" name="Film">
-        <option value="film1">Wonka </option>
-        <option value="film2">Film 2</option>
+        <option >Select a movie </option>
+        <option >Bee movie </option>
+        <option >Cruella </option>
+        <option >Wonka </option>
+        <option >Matilda </option>
+        <option >Askepott</option>
     </select>
 </div>
 
@@ -57,7 +63,7 @@
     <br>
     <br>
     <label> Epost:
-        <input type="text" name="epost">
+        <input type="text" name="epost" id="epost">
     </label>
     <br>
     <br>
