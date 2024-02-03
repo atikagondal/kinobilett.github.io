@@ -23,7 +23,7 @@ function kjopbilett() {
     // Validering for fornavn og etternavn (kun bokstaver tillatt)
     let navnRegex = /^[a-zA-Z]+$/;
     if (!fornavn || !navnRegex.test(fornavn) || !etternavn || !navnRegex.test(etternavn)) {
-        feilmeldingElement.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt).';
+        feilmeldingElement.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt.';
         return;
     }
 
