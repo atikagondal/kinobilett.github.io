@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinobillettbestilling</title>
-    <link rel="stylesheet" href="index.css">
 
 </head>
 <body>
 <h1>Bestilling av kinobilletter</h1>
 
+
 <br>
+
 <!--lager en skjema for kino bilett bestilling -->
 
 
 <div class="dropdown">
     <label for="filmDropdown">Velg film:</label>
     <select id="filmDropdown" name="Film">
-        <option value="film1">Film 1</option>
+        <option value="film1">Wonka </option>
         <option value="film2">Film 2</option>
     </select>
 </div>
@@ -28,39 +29,34 @@
 
 <form id="kinobilettskjema" class="inputContainer">
 
-    <label>
-        Antall:
+    <label> Antall:
         <input type="text" name="antall">
     </label>
 
     <br>
     <br>
 
-    <label>
-        Fornavn:
+    <label> Fornavn:
         <input type="text" id="navn" name="fornavn">
     </label>
 
     <br>
     <br>
 
-    <label>
-        Etternavn:
+    <label> Etternavn:
         <input type="text" name="etternavn">
     </label>
 
     <br>
     <br>
 
-    <label>
-        Telefonnr:
+    <label> Telefonnr:
         <input type="text" name="telefon">
     </label>
 
     <br>
     <br>
-    <label>
-        Epost:
+    <label> Epost:
         <input type="text" name="epost">
     </label>
     <br>
@@ -70,9 +66,9 @@
 </form>
 
 <footer>
-<!-- En liste over alle biletter-->
-<h2>Alle billetter</h2>
-<ul id="billettliste"></ul>
+    <!-- En liste over alle biletter-->
+    <h2>Alle billetter</h2>
+    <ul id="billettliste"></ul>
 </footer>
 <button type="button" onclick="slettAlleBiletter()">Slett alle billetter</button>
 

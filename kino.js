@@ -3,6 +3,9 @@
 //først lages en variabel som jeg lagrer billetter i
 let bilettliste = [];
 
+let feilmeldingElement = document.getElementById('feilmelding')
+
+
 // her lages funksjonen for å kjøpe bilett
 function kjopbilett() {
     //Henter verdier fra input feltet
@@ -13,31 +16,30 @@ function kjopbilett() {
     let epost = document.getElementsByName('epost')[0].value;
 
     //Validere input (implementere valideringsfunksjon for hvert felt)
-    if (!antall || isNaN(antall) || parseInt(antall) <= 0) {
-        alert('Vennligst fyll ut alle felt før du kjøper bilett');
+    if (!antall || isNaN(parseInt(antall)) || parseInt(antall) <= 0) {
+        feilmeldingElement.innerText = 'Vennligst fyll ut alle felt før du kjøper bilett';
         return;
     }
     // Validering for fornavn og etternavn (kun bokstaver tillatt)
     let navnRegex = /^[a-zA-Z]+$/;
     if (!fornavn || !navnRegex.test(fornavn) || !etternavn || !navnRegex.test(etternavn)) {
-        alert('Vennligst skriv inn gyldige navn (kun bokstaver tillatt).');
+        feilmeldingElement.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt).';
         return;
     }
 
     // Validering for telefonnummer (kun tall tillatt)
     let telefonRegex = /^\d+$/;
     if (!telefon || !telefonRegex.test(telefon)) {
-        alert('Vennligst skriv inn et gyldig telefonnummer (kun tall tillatt).');
+        feilmeldingElement.innerText = 'Vennligst skriv inn et gyldig telefonnummer (kun tall tillatt).';
         return;
     }
 
     // Validering for e-postadresse
     let epostRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!epost || !epostRegex.test(epost)) {
-        alert('Vennligst skriv inn en gyldig e-postadresse.');
+        feilmeldingElement.innerText = 'Vennligst skriv inn en gyldig e-postadresse.';
         return;
     }
-
 
     //opprett billettobjektet
     let billett = {
@@ -60,6 +62,7 @@ function kjopbilett() {
     document.getElementsByName('etternavn')[0].value = '';
     document.getElementsByName('telefon')[0].value = '';
     document.getElementsByName('epost')[0].value = '';
+
 }
 
 //funksjon for å vise listen av billettene
