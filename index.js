@@ -1,5 +1,5 @@
 // først lages en variabel som jeg lagrer billetter i
-    let bilettliste = [];
+let bilettliste = [];
 
 // her lages funksjonen for å kjøpe bilett
     function kjopBillett() {
@@ -71,12 +71,21 @@
         visAllebilletter();
     }
 
-function visAllebilletter() {
-        // Loop gjennom alle billettene og vis dem på en eller annen måte
-        for (let i = 0; i < bilettliste.length; i++) {
-            let billett = bilettliste[i];
-            console.log("Film: " + billett.valg + ", Antall: " + billett.antall + ", Navn: " + billett.fornavn + " " + billett.etternavn + ", Telefon: " + billett.telefon + ", Epost: " + billett.epost);
+    function visAllebilletter() {
+        let billettlisteElement = document.getElementById("billettliste");
+        billettlisteElement.innerHTML = ""; // Fjerner eksisterende innhold før vi legger til nytt
+    
+        let ut = "<table> <tr> " +
+            "<th>Velg film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
+        for (let billett of bilettliste) {
+            ut += "<tr>";
+            ut += "<td>" + billett.valg + "</td><td>" + billett.antall + "</td><td>" + billett.fornavn + "</td><td>" + billett.etternavn + "</td><td>" + billett.telefon
+                + "</td><td>" + billett.epost + "</td>";
+            ut += "</tr>";
         }
+        ut += "</table>";
+    
+        billettlisteElement.innerHTML = ut; // Legger til tabellen med billettinformasjonen på nettsiden
     }
     
 
