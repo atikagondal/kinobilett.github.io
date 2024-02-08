@@ -21,6 +21,9 @@ let bilettliste = [];
             telefon: telefon,
             epost: epost
         };
+    
+    
+
 
         console.log("KjopBillett(): " + billett);
 
@@ -30,34 +33,37 @@ let bilettliste = [];
         } else {
             document.getElementById("feilmelding").innerHTML = "";
         }
-        if (billett.antall <= 0 || isNaN(Number(billett.antall))) {
-            document.getElementById("feilantall").innerHTML = "Skriv inn antall hvis tomt";
+        if (isNaN(Number(antall)) || isNaN(parseInt(antall)<=0)) {
+            document.getElementById("feilantall").innerHTML = "Skriv inn et gyldig for antall";
             feilmelding++;
         } else {
             document.getElementById("feilantall").innerHTML = "";
         }
 
-        if (billett.fornavn === "") {
-            document.getElementById("feilfornavn").innerHTML = "Skriv inn fornavnet hvis tomt";
+        // Sjekker om fornavn og etternavn inneholder kun bokstaver og mellomrom
+        let navnRegex = /^[A-Za-z\s]+$/;
+        if (!navnRegex.test(fornavn)) {
+            document.getElementById("feilfornavn").innerHTML = "Skriv inn et gyldig navn";
             feilmelding++;
         } else {
             document.getElementById("feilfornavn").innerHTML = "";
         }
-        if (billett.etternavn =="") {
-            document.getElementById("feiletternavn").innerHTML = "Skriv inn etternavnet hvis tomt";
+
+        if (!navnRegex.test(etternavn)) {
+            document.getElementById("feiletternavn").innerHTML = "Skriv inn et gyldig navn";
             feilmelding++;
         } else {
             document.getElementById("feiletternavn").innerHTML = "";
         }
 
-        if (billett.telefon === "" || isNaN(Number(billett.telefon))) {
+        if (telefon === "" || isNaN(Number(telefon))) {
             document.getElementById("feiltlf").innerHTML = "Skriv inn et gyldig telefon nummer";
             feilmelding++;
         } else {
             document.getElementById("feiltlf").innerHTML = "";
         }
-        if (billett.epost === "") {
-            document.getElementById("feilepost").innerHTML = "Skriv inn antall hvis tomt";
+        if (billett.epost === "" || (!epost.includes("@")) ) {
+            document.getElementById("feilepost").innerHTML = "Skriv inn gyldig epost adresse";
             feilmelding++;
         } else {
             document.getElementById("feilepost").innerHTML = "";
@@ -70,6 +76,7 @@ let bilettliste = [];
         }
         visAllebilletter();
     }
+
 
     function visAllebilletter() {
         let billettlisteElement = document.getElementById("billettliste");
