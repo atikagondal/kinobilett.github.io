@@ -70,11 +70,13 @@ let bilettliste = [];
     
         billettlisteElement.innerHTML = ut; // Legger til tabellen med billettinformasjonen på nettsiden
     }
+}
     
 
 
 
 function TomUtAlleBilletter() {
+    document.getElementById("filmDropdown").value="--Select a film--"
     document.getElementById("antall").value = "";
     document.getElementById("fornavn").value = "";
     document.getElementById("etternavn").value = "";
