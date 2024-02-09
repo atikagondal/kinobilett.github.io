@@ -27,54 +27,30 @@ let bilettliste = [];
 
         console.log("KjopBillett(): " + billett);
 
-        if (billett.valg === "") {
-            document.getElementById("feilmelding").innerHTML = "Velg en film";
-            feilmelding++;
-        } else {
-            document.getElementById("feilmelding").innerHTML = "";
-        }
-        if (isNaN(Number(antall)) || isNaN(parseInt(antall)<=0)) {
-            document.getElementById("feilantall").innerHTML = "Skriv inn et gyldig for antall";
-            feilmelding++;
-        } else {
-            document.getElementById("feilantall").innerHTML = "";
-        }
+        //Validere input (implementere valideringsfunksjon for hvert felt)
+    if (!antall || isNaN(parseInt(antall)) || parseInt(antall) <= 0) {
+        feilmeldingElement.innerText = 'Vennligst fyll ut alle felt før du kjøper bilett';
+        return;
+    }
+    // Validering for fornavn og etternavn (kun bokstaver tillatt)
+    let navnRegex = /^[a-zA-Z]+$/;
+    if (!fornavn || !navnRegex.test(fornavn) || !etternavn || !navnRegex.test(etternavn)) {
+        feilmeldingElement.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt).';
+        return;
+    }
 
-        // Sjekker om fornavn og etternavn inneholder kun bokstaver og mellomrom
-        let navnRegex = /^[A-Za-z\s]+$/;
-        if (!navnRegex.test(fornavn)) {
-            document.getElementById("feilfornavn").innerHTML = "Skriv inn et gyldig navn";
-            feilmelding++;
-        } else {
-            document.getElementById("feilfornavn").innerHTML = "";
-        }
+    // Validering for telefonnummer (kun tall tillatt)
+    let telefonRegex = /^\d+$/;
+    if (!telefon || !telefonRegex.test(telefon)) {
+        feilmeldingElement.innerText = 'Vennligst skriv inn et gyldig telefonnummer (kun tall tillatt).';
+        return;
+    }
 
-        if (!navnRegex.test(etternavn)) {
-            document.getElementById("feiletternavn").innerHTML = "Skriv inn et gyldig navn";
-            feilmelding++;
-        } else {
-            document.getElementById("feiletternavn").innerHTML = "";
-        }
-
-        if (telefon === "" || isNaN(Number(telefon))) {
-            document.getElementById("feiltlf").innerHTML = "Skriv inn et gyldig telefon nummer";
-            feilmelding++;
-        } else {
-            document.getElementById("feiltlf").innerHTML = "";
-        }
-        if (billett.epost === "" || (!epost.includes("@")) ) {
-            document.getElementById("feilepost").innerHTML = "Skriv inn gyldig epost adresse";
-            feilmelding++;
-        } else {
-            document.getElementById("feilepost").innerHTML = "";
-        }
-
-        if (feilmelding === 0) {
-            bilettliste.push(billett);
-            console.log(bilettliste + " tidlig");
-            TomUtAlleBilletter();
-        }
-        visAllebilletter();
+    // Validering for e-postadresse
+    let epostRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!epost || !epostRegex.test(epost) || !gyldigEpost(epost)) {
+        feilmeldingElement.innerText = 'Vennligst skriv inn en gyldig e-postadresse.';
+        return;
     }
 
 
