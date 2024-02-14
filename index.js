@@ -1,10 +1,10 @@
-// først lages en variabel som jeg lagrer billetter i
-let bilettliste = [];
+let bilettliste = []
 
-// her lages funksjonen for å kjøpe bilett
+// Her lages funksjonen for å kjøpe billett
 function kjopBillett() {
+    let feilmelding = 0; // Definerer og initialiserer feilmelding-variabelen
     // Henter verdier fra input-feltene
-    let valg = document.getElementById("filmDropdown").value;
+    let valg = document.getElementById("film").value;
     let antall = document.getElementById("antall").value;
     let fornavn = document.getElementById("fornavn").value;
     let etternavn = document.getElementById("etternavn").value;
@@ -21,47 +21,86 @@ function kjopBillett() {
         epost: epost
     };
 
-    console.log("KjopBillett(): " + billett);
 
-    //Definerer feilmelding variabel
-    let feilmelding = document.getElementById("feilmelding");
+
+    if (billett.valg === ""){
+        document.getElementById("feilmelding").innerHTML="Velg en film"
+        feilmelding++;
+    }else {
+        document.getElementById("feilmelding").innerHTML=" ";
+    }
 
     //Validere input (implementere valideringsfunksjon for hvert felt)
-    if (!valg || !antall || isNaN(parseInt(antall)) || parseInt(antall) <= 0) {
-        feilmelding.innerText = 'Vennligst fyll ut alle felt før du kjøper bilett';
-    }
-    // Validering for fornavn og etternavn (kun bokstaver tillatt)
-    let navnRegex = /^[a-zA-Z]+$/;
-    if (!fornavn || !navnRegex.test(fornavn) || !etternavn || !navnRegex.test(etternavn)) {
-        feilmelding.innerText = 'Vennligst skriv inn gyldige navn (kun bokstaver tillatt).';
+    if (!antall || isNaN(parseInt(antall)) || parseInt(antall) <= 0) {
+        document.getElementById("feilantall").innerHTML = "Skriv inn antall hvis tomt(Kun tall!)"
+        feilmelding++;
+    } else {
+        document.getElementById("feilantall").innerHTML = " ";
+
     }
 
+
+    // Validering for fornavn (kun bokstaver tillatt)
+    let fornavnRegex = /^[a-zA-Z]+$/;
+    if (!fornavn || !fornavnRegex.test(fornavn)) {
+        document.getElementById("feilfornavn").innerHTML = "Skriv inn gyldig fornavn"
+        feilmelding++;
+    } else {
+        document.getElementById("feilfornavn").innerHTML = " ";
+
+    }
+
+
+    // Validering for etternavn (kun bokstaver tillatt)
+    let etternavnRegex = /^[a-zA-Z]+$/;
+    if (!etternavn || !etternavnRegex.test(etternavn)) {
+        document.getElementById("feiletternavn").innerHTML = "Skriv inn gyldig etternavn"
+        feilmelding++;
+    } else {
+        document.getElementById("feiletternavn").innerHTML = " ";
+
+    }
     // Validering for telefonnummer (kun tall tillatt)
     let telefonRegex = /^\d+$/;
     if (!telefon || !telefonRegex.test(telefon)) {
-        feilmelding.innerText = 'Vennligst skriv inn et gyldig telefonnummer (kun tall tillatt).';
+        document.getElementById("feiltlf").innerHTML = "Skriv inn gyldig telefon nummer"
+        feilmelding++;
+    } else {
+        document.getElementById("feiltlf").innerHTML = " ";
+
     }
 
     // Validering for e-postadresse
     let epostRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!epost || !epostRegex.test(epost)) {
-        feilmelding.innerText = 'Vennligst skriv inn en gyldig e-postadresse.';
+        document.getElementById("feilepost").innerHTML = "Skriv inn gyldig epost"
+        feilmelding++;
+    } else {
+        document.getElementById("feilepost").innerHTML = " ";
+
     }
 
-    if (feilmelding.innerText === '') {
-        bilettliste.push(billett);
-        console.log(bilettliste + " tidlig");
-        TomUtAlleBilletter();
+    // Hvis det er feilmeldinger, avbryt kjøpBillett-funksjonen
+    if (feilmelding > 0) {
+        return;
     }
-    visAllebilletter();
+
+
+    
+    // Legg til billett i billettliste
+    bilettliste.push(billett);
+    // Vis billettene
+    visAlleBilletter();
+    TomUtAlleBilletter();
 }
 
-function visAllebilletter() {
+// Funksjon for å vise alle billettene på nettsiden
+function visAlleBilletter() {
     let billettlisteElement = document.getElementById("billettliste");
     billettlisteElement.innerHTML = ""; // Fjerner eksisterende innhold før vi legger til nytt
 
     let ut = "<table> <tr> " +
-        "<th>Velg film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
+        "<th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
     for (let billett of bilettliste) {
         ut += "<tr>";
         ut += "<td>" + billett.valg + "</td><td>" + billett.antall + "</td><td>" + billett.fornavn + "</td><td>" + billett.etternavn + "</td><td>" + billett.telefon
@@ -70,19 +109,22 @@ function visAllebilletter() {
     }
     ut += "</table>";
 
-    billettlisteElement.innerHTML = ut; // Legger til tabellen med billettinformasjonen på nettsiden        }
-
+    billettlisteElement.innerHTML = ut; // Legger til tabellen med billettinformasjonen på nettsiden
 }
 
+//metoden for å tømme alle biletter etter at kjøp biletter er trykket på kjøp billett
 function TomUtAlleBilletter() {
-    document.getElementById("filmDropdown").value="--Select a film--"
-    document.getElementById("antall").value = "";
-    document.getElementById("fornavn").value = "";
-    document.getElementById("etternavn").value = "";
-    document.getElementById("tlf").value = "";
-    document.getElementById("epost").value = "";
+    document.getElementById("film").value= "Velg en film"
+    document.getElementById("antall").value = ""
+    document.getElementById("fornavn").value = ""
+    document.getElementById("etternavn").value = ""
+    document.getElementById("tlf").value = ""
+    document.getElementById("epost").value = ""
 }
 
+
+
+//metoden for å slette alle biletter etter at slett billetter er trykket på 
 function slettAlleBiletter() {
     bilettliste = [];
     console.log("hei");

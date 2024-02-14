@@ -1,66 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinobillettbestilling</title>
 
 </head>
+
 <body>
-<h1>Bestilling av kinobilletter</h1>
-<table>
-    <tr>
-        <td> Velg film: </td>
+    <h1>Bestilling av kinobilletter</h1>
+    <table>
+        <tr>
+            <td> Velg film: </td>
 
-        <td><select id="filmDropdown" name="Film">
-            <option >--Select a movie--</option>
-            <option >Bee movie </option>
-            <option >Cruella </option>
-            <option >Wonka </option>
-            <option >Matilda </option>
-            <option >Askepott</option>
-        </select>
-        </td>
-        <td id="feilmelding" style="color: red"></td>
-    </tr>
+            <td><select id="film">
+                <option value="Velg film her">Velg film her</option>
+                <option value="Polarekspressen">Polarekspressen</option>
+                <option value="Olsenbanden og gjengen">Olsenbanden og gjengen</option>
+                <option value="Harry Potter og mysteriekammeret">Harry Potter og mysteriekammeret</option>
+                <option value="Avatar">Avatar</option>
+            </select>
+    
+            </td>
 
-    <tr>
-        <td> Antall </td>
-        <td><input type="text" id="antall" size="1px"></td>
-        <td id="feilantall" class="feil" style="color: red"></td>
-    </tr>
+            </td>
+            <td id="feilmelding" style="color: red"></td>
+        </tr>
 
-    <tr>
-        <td> Fornavn </td>
-        <td><input type="text" id="fornavn" size="10px"></td>
-        <td id="feilfornavn" class="feil" style="color: red"></td>
-    </tr>
+        <tr>
+            <td> Antall </td>
+            <td><input type="text" id="antall" size="1px"></td>
+            <td id="feilantall" class="feil" style="color: red"></td>
+        </tr>
 
-    <tr>
-    <td> Etternavn </td>
-    <td><input type="text" id="etternavn" size="10px"></td>
-    <td id="feiletternavn" class="feil" style="color: red"></td>
-</tr>
+        <tr>
+            <td> Fornavn </td>
+            <td><input type="text" id="fornavn" size="10px"></td>
+            <td id="feilfornavn" class="feil" style="color: red"></td>
+        </tr>
 
-    <tr>
-    <td> Telefonnr </td>
-    <td><input type="text" id="tlf" size="10px"></td>
-    <td id="feiltlf" class="feil" style="color: red"></td>
-</tr>
+        <tr>
+            <td> Etternavn </td>
+            <td><input type="text" id="etternavn" size="10px"></td>
+            <td id="feiletternavn" class="feil" style="color: red"></td>
+        </tr>
 
-    <tr>
-        <td> epost </td>
-        <td><input type="text" id="epost" size="10px"></td>
-        <td id="feilepost" class="feil" style="color: red"></td>
-    </tr>
-</table>
+        <tr>
+            <td> Telefonnr </td>
+            <td><input type="text" id="tlf" size="10px"></td>
+            <td id="feiltlf" class="feil" style="color: red"></td>
+        </tr>
+
+        <tr>
+            <td> epost </td>
+            <td><input type="text" id="epost" size="10px"></td>
+            <td id="feilepost" class="feil" style="color: red"></td>
+        </tr>
+    </table>
 
 
 
-<button type="button" onclick="kjopBillett()">Kjøp Billett</button>
-<h2>Alle billetter</h2>
-<div id="billettliste"></div>
-<button type="button" onclick="slettAlleBiletter()">Slett alle billetter</button>
-<script src="index.js"></script>
+    <button type="button" onclick="kjopBillett()">Kjøp Billett</button>
+    <h2>Alle billetter</h2>
+    <div id="billettliste"></div>
+    <button type="button" onclick="slettAlleBiletter()">Slett alle billetter</button>
+    <script src="index.js"></script>
 </body>
+
 </html>
