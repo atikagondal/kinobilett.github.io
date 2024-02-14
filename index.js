@@ -23,11 +23,11 @@ function kjopBillett() {
 
 
 
-    if (billett.valg === ""){
+    if (billett.valg === "" || billett.valg === "Velg film her"){
         document.getElementById("feilmelding").innerHTML="Velg en film"
         feilmelding++;
     }else {
-        document.getElementById("feilmelding").innerHTML=" ";
+        document.getElementById("feilmelding").innerHTML="";
     }
 
     //Validere input (implementere valideringsfunksjon for hvert felt)
@@ -114,12 +114,12 @@ function visAlleBilletter() {
 
 //metoden for å tømme alle biletter etter at kjøp biletter er trykket på kjøp billett
 function TomUtAlleBilletter() {
-    document.getElementById("film").value= "Velg en film"
-    document.getElementById("antall").value = ""
-    document.getElementById("fornavn").value = ""
-    document.getElementById("etternavn").value = ""
-    document.getElementById("tlf").value = ""
-    document.getElementById("epost").value = ""
+    document.getElementById("film").selectedIndex = 0;
+    document.getElementById("antall").value = "";
+    document.getElementById("fornavn").value = "";
+    document.getElementById("etternavn").value = "";
+    document.getElementById("tlf").value = "";
+    document.getElementById("epost").value = "";
 }
 
 
