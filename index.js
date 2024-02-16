@@ -11,6 +11,7 @@ function kjopBillett() {
     let telefon = document.getElementById("tlf").value;
     let epost = document.getElementById("epost").value;
 
+
     //oppretter billettobjektet
     let billett = {
         valg: valg,
@@ -21,8 +22,7 @@ function kjopBillett() {
         epost: epost
     };
 
-
-
+    // Validering for valg av film 
     if (billett.valg === "" || billett.valg === "Velg film her"){
         document.getElementById("feilmelding").innerHTML="Velg en film"
         feilmelding++;
@@ -39,29 +39,24 @@ function kjopBillett() {
 
     }
 
-
-    // Validering for fornavn (kun bokstaver tillatt)
-    let fornavnRegex = /^[a-zA-Z]+$/;
-    if (!fornavn || !fornavnRegex.test(fornavn)) {
-        document.getElementById("feilfornavn").innerHTML = "Skriv inn gyldig fornavn(Kun bokstaver tilatt)"
+    // Validering for fornavn (kun hvis tomt)
+    if (billett.fornavn==="" ){
+        document.getElementById("feilfornavn").innerHTML = "Skriv inn fornavn(Kun bokstaver tilatt)"
         feilmelding++;
     } else {
         document.getElementById("feilfornavn").innerHTML = " ";
-
     }
-
-
-    // Validering for etternavn (kun bokstaver tillatt)
-    let etternavnRegex = /^[a-zA-Z]+$/;
-    if (!etternavn || !etternavnRegex.test(etternavn)) {
-        document.getElementById("feiletternavn").innerHTML = "Skriv inn gyldig etternavn(Kun bokstaver tilatt)"
+   
+    // Validering for etternavn (kun hvis tomt)
+    if (billett.etternavn=== "" ){
+        document.getElementById("feiletternavn").innerHTML = "Skriv inn etternavn(Kun bokstaver tilatt)"
         feilmelding++;
     } else {
         document.getElementById("feiletternavn").innerHTML = " ";
-
     }
+
     // Validering for telefonnummer (kun tall tillatt)
-    let telefonRegex = /^\d+$/;
+    let telefonRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
     if (!telefon || !telefonRegex.test(telefon)) {
         document.getElementById("feiltlf").innerHTML = "Skriv inn gyldig telefon nummer"
         feilmelding++;
@@ -71,7 +66,7 @@ function kjopBillett() {
     }
 
     // Validering for e-postadresse
-    let epostRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let epostRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!epost || !epostRegex.test(epost)) {
         document.getElementById("feilepost").innerHTML = "Skriv inn gyldig epost"
         feilmelding++;
@@ -80,13 +75,12 @@ function kjopBillett() {
 
     }
 
+
     // Hvis det er feilmeldinger, avbryt kjøpBillett-funksjonen
     if (feilmelding > 0) {
         return;
     }
 
-
-    
     // Legg til billett i billettliste
     bilettliste.push(billett);
     // Vis billettene
