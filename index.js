@@ -43,7 +43,7 @@ function kjopBillett() {
     // Validering for fornavn (kun bokstaver tillatt)
     let fornavnRegex = /^[a-zA-Z]+$/;
     if (!fornavn || !fornavnRegex.test(fornavn)) {
-        document.getElementById("feilfornavn").innerHTML = "Skriv inn gyldig fornavn"
+        document.getElementById("feilfornavn").innerHTML = "Skriv inn gyldig fornavn(Kun bokstaver tilatt)"
         feilmelding++;
     } else {
         document.getElementById("feilfornavn").innerHTML = " ";
@@ -54,7 +54,7 @@ function kjopBillett() {
     // Validering for etternavn (kun bokstaver tillatt)
     let etternavnRegex = /^[a-zA-Z]+$/;
     if (!etternavn || !etternavnRegex.test(etternavn)) {
-        document.getElementById("feiletternavn").innerHTML = "Skriv inn gyldig etternavn"
+        document.getElementById("feiletternavn").innerHTML = "Skriv inn gyldig etternavn(Kun bokstaver tilatt)"
         feilmelding++;
     } else {
         document.getElementById("feiletternavn").innerHTML = " ";
