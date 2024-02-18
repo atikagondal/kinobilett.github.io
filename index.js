@@ -23,11 +23,11 @@ function kjopBillett() {
     };
 
     // Validering for valg av film 
-    if (billett.valg === "" || billett.valg === "Velg film her"){
-        document.getElementById("feilmelding").innerHTML="Velg en film"
+    if (billett.valg === "" || billett.valg === "Velg film her") {
+        document.getElementById("feilmelding").innerHTML = "Velg en film"
         feilmelding++;
-    }else {
-        document.getElementById("feilmelding").innerHTML="";
+    } else {
+        document.getElementById("feilmelding").innerHTML = "";
     }
 
     //Validere input (implementere valideringsfunksjon for hvert felt)
@@ -40,16 +40,16 @@ function kjopBillett() {
     }
 
     // Validering for fornavn (kun hvis tomt)
-    if (billett.fornavn==="" ){
-        document.getElementById("feilfornavn").innerHTML = "Skriv inn fornavn(Kun bokstaver tilatt)"
+    if (billett.fornavn === "") {
+        document.getElementById("feilfornavn").innerHTML = "Skriv inn fornavn hvis tomt!"
         feilmelding++;
     } else {
         document.getElementById("feilfornavn").innerHTML = " ";
     }
-   
+
     // Validering for etternavn (kun hvis tomt)
-    if (billett.etternavn=== "" ){
-        document.getElementById("feiletternavn").innerHTML = "Skriv inn etternavn(Kun bokstaver tilatt)"
+    if (billett.etternavn === "") {
+        document.getElementById("feiletternavn").innerHTML = "Skriv inn etternavn hvis tomt!"
         feilmelding++;
     } else {
         document.getElementById("feiletternavn").innerHTML = " ";
